@@ -1,5 +1,4 @@
 <?php
-if( !defined('ABSPATH') ){ exit();}
 function smap_free_network_install($networkwide) {
 	global $wpdb;
 
@@ -27,12 +26,9 @@ function smap_install_free()
 	if (is_plugin_active($pluginName)) {
 		wp_die( "The plugin Social Media Auto Publish cannot be activated unless the premium version of this plugin is deactivated. Back to <a href='".admin_url()."plugins.php'>Plugin Installation</a>." );
 	}
-	if (version_compare(PHP_VERSION, '5.4.0', '<')) {	
-		wp_die( "The plugin Social Media Auto Publish requires PHP version 5.4 or higher. Back to <a href='".admin_url()."plugins.php'>Plugin Installation</a>." );
-	}
 	
 	global $current_user;
-	wp_get_current_user();
+	get_currentuserinfo();
 	if(get_option('xyz_credit_link')=="")
 	{
 		add_option("xyz_credit_link", '0');
@@ -44,17 +40,16 @@ function smap_install_free()
 		$smap_installed_date = time();
 		update_option('smap_installed_date', $smap_installed_date);
 	}
-	add_option('xyz_smap_application_name','');
 	add_option('xyz_smap_application_id','');
 	add_option('xyz_smap_application_secret', '');
-	//add_option('xyz_smap_fb_id', '');
+	add_option('xyz_smap_fb_id', '');
 	add_option('xyz_smap_message', 'New post added at {BLOG_TITLE} - {POST_TITLE}');
  	add_option('xyz_smap_po_method', '2');
 	add_option('xyz_smap_post_permission', '1');
 	add_option('xyz_smap_current_appln_token', '');
 	add_option('xyz_smap_af', '1'); //authorization flag
 	add_option('xyz_smap_pages_ids','-1');
-	
+
 	add_option('xyz_smap_twconsumer_secret', '');
 	add_option('xyz_smap_twconsumer_id','');
 	add_option('xyz_smap_tw_id', '');
@@ -63,7 +58,6 @@ function smap_install_free()
 	add_option('xyz_smap_twpost_image_permission', '1');
 	add_option('xyz_smap_twaccestok_secret', '');
 	add_option('xyz_smap_twmessage', '{POST_TITLE} - {PERMALINK}');
-	add_option('xyz_smap_twtr_char_limit',280);
 	
 	add_option('xyz_smap_application_lnarray', '');
 	add_option('xyz_smap_ln_shareprivate', '0');
@@ -74,6 +68,7 @@ function smap_install_free()
 // 	add_option('xyz_smap_lnoauth_token', '');
 // 	add_option('xyz_smap_lnoauth_secret', '');
 	add_option('xyz_smap_lnpost_permission', '1');
+	add_option('xyz_smap_lnpost_image_permission', '1');
 	add_option('xyz_smap_lnaf', '1');
 	add_option('xyz_smap_lnmessage', '{POST_TITLE} - {PERMALINK}');
 	add_option('xyz_smap_std_future_to_publish', '1');
@@ -93,11 +88,7 @@ function smap_install_free()
 	add_option('xyz_smap_twap_post_logs', '');
 	add_option('xyz_smap_premium_version_ads', '1');
 	add_option('xyz_smap_default_selection_edit', '0');
-// 	add_option('xyz_smap_utf_decode_enable', '0');
-	add_option('xyz_smap_dnt_shw_notice','0');
-	if(get_option('xyz_smap_credit_dismiss') == ""){
-		add_option("xyz_smap_credit_dismiss",0);
-	}
+
 }
 
 register_activation_hook(XYZ_SMAP_PLUGIN_FILE,'smap_free_network_install');
