@@ -1,10 +1,10 @@
-﻿=== Social Media Auto Publish ===
+=== Social Media Auto Publish ===
 Contributors: f1logic
-Donate link: http://xyzscripts.com/donate/
+Donate link: https://xyzscripts.com/donate/
 Tags:  social media auto publish, social media publishing, post to facebook, post to twitter, post to linkedin, social network auto publish, social media, social network, add link to facebook, add link to twitter, add link to linkedin, publish to facebook, publish to twitter, publish to linkedin
-Requires at least: 2.8
-Tested up to: 4.3
-Stable tag: 1.5.2
+Requires at least: 3.0
+Tested up to: 4.9.5
+Stable tag: 1.7.8
 License: GPLv2 or later
 
 Publish posts automatically to social media networks like Facebook, Twitter and LinkedIn.
@@ -31,7 +31,7 @@ The prominent features of  the social media auto publish plugin are highlighted 
 
 = Supported Social Media =
 
-The various social media supported are listed below. 
+The various social media supported are listed below.
 
     Facebook
     Twitter
@@ -48,7 +48,7 @@ The plugin offers multiple kinds of filters for contents to be published automat
 = Message Format Settings =
 
     Separate message format for Facebook, Twitter and LinkedIn
-    Supports post title, description, excerpt, permalink, blog title and user nicename
+    Supports post title, description, excerpt, permalink, blog title, nicename, post id and post publish date
 
 = Posting options =
 
@@ -56,33 +56,33 @@ The plugin offers multiple kinds of filters for contents to be published automat
     Attach post to Facebook
     Share link on Facebook
     Post to specific pages on Facebook
-    Post to Twitter with image    
-    Post to LinkedIn with image    
+    Post to Twitter with image
+    Post to LinkedIn with image
 
 
 = About =
 
-Social Media Auto Publish is developed and maintained by [XYZScripts](http://xyzscripts.com/ "xyzscripts.com"). For any support, you may [contact us](http://xyzscripts.com/support/ "XYZScripts Support").
+Social Media Auto Publish is developed and maintained by [XYZScripts](https://xyzscripts.com/ "xyzscripts.com"). For any support, you may [contact us](https://xyzscripts.com/support/ "XYZScripts Support").
 
-★ [Social Media Auto Publish User Guide](http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/ "Social Media Auto Publish User Guide")
-★ [Social Media Auto Publish FAQ](http://kb.xyzscripts.com/wordpress-plugins/social-media-auto-publish/ "Social Media Auto Publish FAQ")
+★ [Social Media Auto Publish User Guide](http://help.xyzscripts.com/docs/social-media-auto-publish/ "Social Media Auto Publish User Guide")
+★ [Social Media Auto Publish FAQ](http://help.xyzscripts.com/docs/social-media-auto-publish/faq/ "Social Media Auto Publish FAQ")
 
 == Installation ==
 
-★ [Social Media Auto Publish User Guide](http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/ "Social Media Auto Publish User Guide")
-★ [Social Media Auto Publish FAQ](http://kb.xyzscripts.com/wordpress-plugins/social-media-auto-publish/ "Social Media Auto Publish FAQ")
+★ [Social Media Auto Publish User Guide](http://help.xyzscripts.com/docs/social-media-auto-publish/installation/ "Social Media Auto Publish User Guide")
+★ [Social Media Auto Publish FAQ](http://help.xyzscripts.com/docs/social-media-auto-publish/faq/ "Social Media Auto Publish FAQ")
 
 1. Extract `social-media-auto-publish.zip` to your `/wp-content/plugins/` directory.
 2. In the admin panel under plugins activate Social Media Auto Publish.
 3. You can configure the settings from Social Media Auto Publish menu. (Make sure to Authorize Facebook application after saving the settings.)
 4. Once these are done, posts should get automatically published based on your filter settings.
 
-If you need any further help, you may contact our [support desk](http://xyzscripts.com/support/ "XYZScripts Support").
+If you need any further help, you may contact our [support desk](https://xyzscripts.com/support/ "XYZScripts Support").
 
 == Frequently Asked Questions ==
 
-★ [Social Media Auto Publish User Guide](http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/ "Social Media Auto Publish User Guide")
-★ [Social Media Auto Publish FAQ](http://kb.xyzscripts.com/wordpress-plugins/social-media-auto-publish/ "Social Media Auto Publish FAQ")
+★ [Social Media Auto Publish User Guide](http://help.xyzscripts.com/docs/social-media-auto-publish/user-guide-free-plugin/ "Social Media Auto Publish User Guide")
+★ [Social Media Auto Publish FAQ](http://help.xyzscripts.com/docs/social-media-auto-publish/faq/ "Social Media Auto Publish FAQ")
 
 = 1. The Social Media Auto Publish is not working properly. =
 
@@ -106,15 +106,16 @@ When you create your own applications, it ensures that the posts to Facebook, Tw
 
 = 5. Which  all data fields can I send to social networks ? =
 
-You may use post title, content, excerpt, permalink, site title and user nicename for auto publishing.
+You may use post title, content, excerpt, permalink, blog title, user nicename, post id and post publish date for auto publishing.
 
 
 = 6. Why do I see SSL related errors in logs ? =
 
 SSL peer verification may not be functioning in your server. Please turn off SSL peer verification in settings of plugin and try again.
 
+= More questions ? =
 
-More questions ? [Drop a mail](http://xyzscripts.com/members/support/ "XYZScripts Support") and we shall get back to you with the answers.
+[Drop a mail](https://xyzscripts.com/support/ "XYZScripts Support") and we shall get back to you with the answers.
 
 
 == Screenshots ==
@@ -126,9 +127,66 @@ More questions ? [Drop a mail](http://xyzscripts.com/members/support/ "XYZScript
 
 == Changelog ==
 
+= Social Media Auto Publish 1.7.8 =
+* Removed Facebook deprecated permission 'publish_actions'
+* Applied WordPress time format in {POST_PUBLISH_DATE}
+
+= Social Media Auto Publish 1.7.7 =
+* Twitter api updated with wp_remote_get
+* Facebook authorisation issue fixed
+* UI updated
+
+= Social Media Auto Publish 1.7.6 =
+* Added USER_DISPLAY_NAME in message formats
+* Updated twitter character length limit 
+* Minor security issues fixed
+* Removed irrelevant configurations
+* Twitter api updated
+
+= Social Media Auto Publish 1.7.5 =
+* Compatibility with facebook API V 2.11 added
+* Minor bug fixes
+
+= Social Media Auto Publish 1.7.4 =
+* Removed Caption from {POST_CONTENT}
+* Fixed LinkedIn character length issue
+* Fixed Facebook image selection issue for 'Share a link to your blog post' and 'Attach your blog post'
+* Fixed ssl peer verification in wp_remote_get/wp_remote_post calls
+
+= Social Media Auto Publish 1.7.3 =
+* Added POST_ID and POST_PUBLISH_DATE in message formats
+
+= Social Media Auto Publish 1.7.2 =
+* Fixed facebook boost unavailable issue
+* Nonce added
+* Prevented direct access to plugin files
+* Data validation updated
+* Fixed facebook app album related issue
+
+= Social Media Auto Publish 1.7.1 =
+* utf-8 decoding issue fixed
+* Visual composer compatiblity issue fixed
+* Minor bugs fixed
+
+= Social Media Auto Publish 1.7 =
+* Facebook api updated(requires PHP version 5.4 or higher)
+* Twitter 140 character exceeding issue fixed
+
+= Social Media Auto Publish 1.6.1 =
+* Fixed custom post types autopublish issue
+* Fixed duplicate autopublish issue
+
+= Social Media Auto Publish 1.6 =
+* Added option to enable/disable utf-8 decoding before publishing
+* Removed unwanted configuration related to 'future_to_publish' hook
+* Removed unwanted setting "Facebook user id"
+* Postid added in autopublish logs
+* Updated auto publish mechanism using transition_post_status hook
+* Open graph meta tags will be prefered for facebook and linkedin attachments
+
 = Social Media Auto Publish 1.5.2 =
 * Latest five auto publish logs for each social media account are maintained
-* Inline edit of posts will work according to the value set for "Default selection of auto publish while editing posts/pages" 
+* Inline edit of posts will work according to the value set for "Default selection of auto publish while editing posts/pages"
 * Resolved issue in fetching facebook pages in settings page (in case of more than 100 pages)
 
 = Social Media Auto Publish 1.5.1 =
@@ -136,8 +194,8 @@ More questions ? [Drop a mail](http://xyzscripts.com/members/support/ "XYZScript
 
 = Social Media Auto Publish 1.5 =
 * Updated Linkedin API
-* Auto publish added during quick edit 
-* Added option to enable/disable "future_to_publish" hook for handling auto publish of scheduled posts	
+* Auto publish added during quick edit
+* Added option to enable/disable "future_to_publish" hook for handling auto publish of scheduled posts
 * Added options to enable/disable "the_content", "the_excerpt", "the_title" filters on content to be auto-published
 
 = Social Media Auto Publish 1.4.3 =
@@ -182,16 +240,16 @@ More questions ? [Drop a mail](http://xyzscripts.com/members/support/ "XYZScript
 
 = Social Media Auto Publish 1.2 =
 * Support for user nicename in auto publish
-* A few bug fixes 
+* A few bug fixes
 
 = Social Media Auto Publish 1.1.1 =
 * Fix for multiple posting to social media
 * Fixed PHP version compatability issue for versions less than 5.3
-* A few bug fixes 
+* A few bug fixes
 
 = Social Media Auto Publish 1.1 =
 * Support for publishing to LinkedIn
-* A few bug fixes 
+* A few bug fixes
 
 = Social Media Auto Publish 1.0 =
 * First official launch.
@@ -203,8 +261,8 @@ If you had issues  with default image used for auto publishing as well as linked
 
 == More Information ==
 
-★ [Social Media Auto Publish User Guide](http://docs.xyzscripts.com/wordpress-plugins/social-media-auto-publish/ "Social Media Auto Publish User Guide")
-★ [Social Media Auto Publish FAQ](http://kb.xyzscripts.com/wordpress-plugins/social-media-auto-publish/ "Social Media Auto Publish FAQ")
+★ [Social Media Auto Publish User Guide](http://help.xyzscripts.com/docs/social-media-auto-publish/ "Social Media Auto Publish User Guide")
+★ [Social Media Auto Publish FAQ](http://help.xyzscripts.com/docs/social-media-auto-publish/faq/ "Social Media Auto Publish FAQ")
 
 = Troubleshooting =
 
@@ -212,9 +270,9 @@ Please read the FAQ first if you are having problems.
 
 = Requirements =
 
-    WordPress 2.8+
-    PHP 5+ 
+    WordPress 3.0+
+    PHP 5.4+
 
 = Feedback =
 
-We would like to receive your feedback and suggestions about Social Media Auto Publish plugin. You may submit them at our [support desk](http://xyzscripts.com/support/ "XYZScripts Support").
+We would like to receive your feedback and suggestions about Social Media Auto Publish plugin. You may submit them at our [support desk](https://xyzscripts.com/support/ "XYZScripts Support").

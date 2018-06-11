@@ -25,31 +25,15 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 if( !defined('ABSPATH') ){ exit();}
-
 if ( !function_exists( 'add_action' ) ) {
 	echo "Hi there!  I'm just a plugin, not much I can do when called directly.";
 	exit;
 }
-
 //error_reporting(0);
 define('XYZ_SMAP_PLUGIN_FILE',__FILE__);
 
 if (!defined('XYZ_SMAP_FB_API_VERSION'))
-	define('XYZ_SMAP_FB_API_VERSION','v3.0');
-if (!defined('XYZ_SMAP_FB_api'))
-	define('XYZ_SMAP_FB_api','https://api.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/');
-if (!defined('XYZ_SMAP_FB_api_video'))
-	define('XYZ_SMAP_FB_api_video','https://api-video.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/');
-if (!defined('XYZ_SMAP_FB_api_read'))
-	define('XYZ_SMAP_FB_api_read','https://api-read.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/');
-if (!defined('XYZ_SMAP_FB_graph'))
-	define('XYZ_SMAP_FB_graph','https://graph.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/');
-if (!defined('XYZ_SMAP_FB_graph_video'))
-	define('XYZ_SMAP_FB_graph_video','https://graph-video.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/');
-if (!defined('XYZ_SMAP_FB_www'))
-	define('XYZ_SMAP_FB_www','https://www.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/');
-
-
+	define('XYZ_SMAP_FB_API_VERSION','v2.6');
 global $wpdb;
 if(isset($_POST) && isset($_POST['fb_auth'] ) || (isset($_GET['page']) && ($_GET['page']=='social-media-auto-publish-settings')))
 {
@@ -62,9 +46,12 @@ require_once( dirname( __FILE__ ) . '/xyz-functions.php' );
 require_once( dirname( __FILE__ ) . '/admin/menu.php' );
 require_once( dirname( __FILE__ ) . '/admin/destruction.php' );
 
-if(!class_exists('SMAPFacebook'))
-require_once( dirname( __FILE__ ) . '/api/facebook.php' );
-
+if (version_compare(PHP_VERSION, '5.4.0', '>'))
+{ 
+require_once( dirname( __FILE__ ) . '/api/Facebook/autoload.php');
+require_once( dirname( __FILE__ ) . '/admin/publish.php' );
+}
+	
 if(!class_exists('SMAPTwitterOAuth'))
 require_once( dirname( __FILE__ ) . '/api/twitteroauth.php' );
 
@@ -72,25 +59,17 @@ if(!class_exists('SMAPOAuth2'))
 require_once( dirname( __FILE__ ) . '/api/linkedin.php' );
 require_once( dirname( __FILE__ ) . '/admin/ajax-backlink.php' );
 require_once( dirname( __FILE__ ) . '/admin/metabox.php' );
-require_once( dirname( __FILE__ ) . '/admin/publish.php' );
 require_once( dirname( __FILE__ ) . '/admin/admin-notices.php' );
 
 if(get_option('xyz_credit_link')=="smap"){
 
-//	add_action('wp_footer', 'xyz_smap_credit');
+	add_action('wp_footer', 'xyz_smap_credit');
 
 }
 function xyz_smap_credit() {
-	$content = '<div style="clear:both;width:100%;text-align:center; font-size:11px; "><a target="_blank" title="Social Media Auto Publish" href="http://xyzscripts.com/wordpress-plugins/social-media-auto-publish/details" >Social Media Auto Publish</a> Powered By : <a target="_blank" title="PHP Scripts & Programs" href="http://www.xyzscripts.com" >XYZScripts.com</a></div>';
+	$content = '<div style="clear:both;width:100%;text-align:center; font-size:11px; "><a target="_blank" title="Social Media Auto Publish" href="https://xyzscripts.com/wordpress-plugins/social-media-auto-publish/details" >Social Media Auto Publish</a> Powered By : <a target="_blank" title="PHP Scripts & Programs" href="http://www.xyzscripts.com" >XYZScripts.com</a></div>';
 	echo $content;
 }
 if(!function_exists('get_post_thumbnail_id'))
 	add_theme_support( 'post-thumbnails' );
-
-// loading language
-load_plugin_textdomain(
-    'social-media-auto-publish',
-    false,
-    dirname( plugin_basename( __FILE__ ) ) . '/languages/'
-);
 ?>
